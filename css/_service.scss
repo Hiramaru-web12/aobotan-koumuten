@@ -1,0 +1,138 @@
+@use 'mixin';
+@use 'variable';
+@use 'reset';
+@use 'common';
+@use 'function';
+@use 'header';
+@use 'footer';
+
+/* ===============================================
+# serviceページ ファーストビュー
+=============================================== */
+.p-service__fv-img {
+  background: url(../img/Firefly01.png) no-repeat center center / cover;
+  padding-top: 55%;
+  border-radius: 50px;
+
+  @include mixin.mq('sp') {
+    margin-top: function.pxToRem(100);
+    padding-top: 100%;
+    border-radius: 50px 0 0 50px;
+  }
+
+  @include mixin.mq('tab') {
+    padding-top: 64%;
+    border-radius: 50px 0 0 50px;
+  }
+}
+
+
+/* ===============================================
+# 事業内容 全体レイアウト
+=============================================== */
+.p-service-page__main {
+  padding-bottom: function.pxToRem(72);
+}
+
+/* ===============================================
+ 事業内容の詳細
+=============================================== */
+.p-service__list {
+  padding-top: function.pxToRem(75);
+  
+  @include mixin.mq('sp') {
+    padding-top: function.pxToRem(90);
+  }
+}
+.p-service__list__img {
+  width: min(100%, #{function.pxToRem(960)});
+}
+
+.p-service-page__container {
+  padding-left: 50px;
+
+  @include mixin.mq('sp') {
+    padding-left: 0;
+  }
+
+  @include mixin.mq('tab') {
+    padding-left: 0;
+  }
+}
+
+.p-serivice-page__title {
+  font-size: function.pxToRem(24);
+  padding: function.pxToRem(56) 0 function.pxToRem(40);
+  border-bottom: 1px solid variable.$sub-color;
+  width: min(100%, #{function.pxToRem(860)});
+
+  @include mixin.mq('sp') {
+    padding: function.pxToRem(28) 0 function.pxToRem(20);
+    width: 100%;
+  }
+}
+
+.p-service-page__wrap{
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  width: min(100%,#{function.pxToRem(860)});
+  padding-top: function.pxToRem(20);
+  gap: clamp(2.5rem, 1.887rem + 2.61vw, 3.75rem);
+  min-height: function.pxToRem(300);
+
+  @media screen and (max-width: 590px) {
+    display: flex;
+    flex-flow: column wrap;
+    gap: function.pxToRem(36);
+  }
+    
+  }
+
+
+.p-service-page__text--left {
+  font-weight: 700;
+  font-size: clamp(1rem, 0.886rem + 0.48vw, 1.25rem);
+  line-height: function.pxToRem(36);
+  width: min(100%, #{function.pxToRem(380)});
+
+  @include mixin.mq('sp') {
+    width: 100%;
+  }
+  @include mixin.mq('tab') {
+    width: 100%;
+  }
+}
+
+.p-service-page__text--right{
+  line-height: function.pxToRem(28.8);
+
+  @include mixin.mq('sp') {
+    width: 100%;
+  }
+
+  @include mixin.mq('tab') {
+    width: 100%;
+  }
+}
+
+.p-service-page__text {
+  span {
+    font-weight: 700;
+    font-size: 1.25em;
+  }
+}
+
+.p-service-page__item {
+  display: flex;
+  flex-flow: column;
+  gap: function.pxToRem(16);
+
+  
+
+  .u-top {
+    font-weight: 700;
+  }
+
+  .u-bottom {
+   font-size: function.pxToRem(14); }
+}

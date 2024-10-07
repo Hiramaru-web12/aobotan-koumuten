@@ -1,0 +1,42 @@
+@use 'mixin';
+@use 'variable';
+@use 'reset';
+@use 'common';
+@use 'function';
+@use 'header';
+@use 'footer';
+
+.p-thanks__inner {
+ padding-bottom:function.pxToRem(170);
+}
+
+.p-toTop {
+  [type="submit"]{
+    display: none;
+  }
+  margin: function.pxToRem(48) 0 0;
+  border: 1px solid variable.$primary-color;
+  color: #fff;
+  width: min(100%, #{function.pxToRem(284)});
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  background: variable.$primary-color;
+  transition: all 0.3s ease 0s;
+  padding: 1.1em 2em;
+  font-weight: 700;
+
+  &::after{
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    transition: all 0.3s ease 0s;
+  }
+}

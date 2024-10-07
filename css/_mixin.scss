@@ -1,0 +1,18 @@
+/* ===============================================
+breakpoints
+=============================================== */
+$breakpoints: (
+  "sp": "screen and ( max-width: 767px )",  
+  "tab": "screen and ( min-width: 768px ) and ( max-width: 1278px )",
+  "pc": "screen and ( min-width: 1279px )",
+)!default;
+
+/* ===============================================
+mixin
+=============================================== */
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+

@@ -1,0 +1,260 @@
+@use 'mixin';
+@use 'variable';
+@use 'common';
+@use 'function';
+
+
+/* ===============================================
+# header
+=============================================== */
+.l-header {
+  position: fixed;
+  z-index:3;
+  background: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  @include mixin.mq('pc') {
+    padding-left: function.pxToRem(40);
+    padding-right: function.pxToRem(40);
+    width: function.vw(280);
+    height: 100vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none; // Microsoft Edgeへの対応
+    scrollbar-width: none; //Firefoxへの対応
+    &::-webkit-scrollbar{
+     display: none;// Google Chrome、Safariへの対応
+   }
+}
+
+  @include mixin.mq('sp') {
+    height: function.pxToRem(100);
+    
+  }
+
+  @include mixin.mq('tab') {
+    height: function.pxToRem(120);
+  }
+}
+
+.l-header__logo{
+  margin-top: function.pxToRem(74);
+  padding-bottom: function.pxToRem(30);
+
+  @include mixin.mq('sp') {
+  width: function.pxToRem(98);
+  height: function.pxToRem(60);
+  margin-top: function.pxToRem(16);
+  padding-bottom: 0;
+  }
+
+  @include mixin.mq('tab') {
+   width: function.pxToRem(160);
+  margin-top: function.pxToRem(16);
+  padding-bottom: 0;
+  }
+}
+
+.l-header__wrap {
+  @include mixin.mq('sp') {
+    display: none;
+  }
+  @include mixin.mq('tab') {
+    display: none;
+  }
+}
+
+
+.l-header__nav {
+  font-weight: 700;
+  font-size: function.pxToRem(20);
+  border-bottom: 1px solid variable.$sub-color;
+  padding: function.pxToRem(32) 0;
+  position: relative;
+  line-height: function.pxToRem(24);
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+
+  &:hover {
+    opacity: .6;
+  }
+  
+  .c-header__mail-icon {
+    display: inline-block;
+    vertical-align: -3px;
+    padding-right: function.pxToRem(16);
+  }
+}
+
+.l-header__nav__icon {
+  
+  &::before {
+    background: variable.$primary-color;
+    content: '';
+    position: absolute;
+    display: block;
+    height: 1px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease 0s;
+    width: 24px; 
+  }
+  
+  &::after {
+    background: variable.$primary-color;
+    content: '';
+    display: block;
+    height: 1px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transition: all 0.3s ease 0s;
+    width: function.pxToRem(24);
+    transform: translateY(-50%) rotate(90deg);
+  }
+  
+  &.is-open {
+    &::before {
+      opacity: 0;
+    }
+    &::after {
+      transform: translateY(-50%) rotate(0);
+    }
+  } 
+}
+
+.l-header__nav__list {
+  display: none;
+  padding: function.pxToRem(20) 0;
+  border-bottom: 1px solid variable.$sub-color;
+  font-size: function.pxToRem(14);
+  
+  li {
+    padding: function.pxToRem(10) function.pxToRem(6);
+  }
+  
+  a{
+    padding-right: 2em;
+    padding-left: 1em;
+    font-weight: 700;
+  }
+}
+
+/* ===============================================
+# drawer
+=============================================== */
+.l-drawer__icon {
+
+  @media screen and ( max-width: 1279px ) {
+    position: absolute;
+    content: "";
+    background: variable.$primary-color;
+    display: inline-block;
+    width: function.pxToRem(56);
+    height: function.pxToRem(48);
+    top: 0;
+    right: 0;
+    z-index: 10;
+    transition: transform 0.5s ease 0s;
+    
+    &.is-active{
+      span {
+        &:nth-of-type(1){
+          transform: translateY(12px)rotate(-45deg);
+          top: 23px;
+          background: #fff;
+          }
+          &:nth-of-type(2) {
+            opacity: 0;
+          }
+          &:nth-of-type(3) {
+            transform: translateY(-12px) rotate(45deg);
+            top: 23px;
+            background: #fff;
+          }
+        }
+    }
+  }
+ 
+
+.l-drawer__bars {
+
+  span {
+    display: inline-block;
+    transition: all .4s;/*アニメーションの設定*/
+    position: absolute;
+    left: function.pxToRem(12);
+    height: 1px;
+    background: #fff;
+    width: function.pxToRem(32);
+  
+    &:nth-of-type(1){
+      top: function.pxToRem(11);
+    }
+    &:nth-of-type(2){
+      top: function.pxToRem(23);
+    }
+    &:nth-of-type(3){
+      top: function.pxToRem(35);
+    }
+  }
+  }
+}
+
+
+.l-drawer {
+  display: none;
+
+  @media screen and ( max-width: 1278px ){
+    display: block;
+    background: #fff;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -120%;
+    padding-bottom: function.pxToRem(24);
+    z-index: 9;
+    transition: all 0.5s linear 0s;
+    overflow-y: scroll;
+    -ms-overflow-style: none; // Microsoft Edgeへの対応
+    scrollbar-width: none; //Firefoxへの対応
+    &::-webkit-scrollbar{
+     display: none;// Google Chrome、Safariへの対応
+    }
+  
+    &.is-active {
+      right: 0;
+   }
+  }
+.l-drawer__logo {
+  margin-top: function.pxToRem(16);
+width: function.pxToRem(98);
+height: function.pxToRem(60);
+
+@include mixin.mq('tab') {
+  width: function.pxToRem(160);
+}
+}
+
+.l-drawer__inner {
+  text-align: center;
+li {
+  font-weight: 700;
+padding-top: function.pxToRem(32);
+
+.c-mail-icon {
+  display: inline-block;
+ vertical-align: -5px;
+ padding-right: .5rem;
+ }
+}
+}
+
+.l-drawer__copyright {
+  font-size: function.pxToRem(12);
+  margin-top: function.pxToRem(24);
+}
+}

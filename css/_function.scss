@@ -1,0 +1,21 @@
+/* ===============================================
+# sass関数
+=============================================== */
+
+// px→vw変換
+$pcDesignSize: 1440;
+$spDesignSize: 375;
+@function vw( $size: 16 ) {
+  $vw: $size * (100 / $pcDesignSize) + vw;
+  @return $vw;
+}
+@function svw( $size: 16 ) {
+  $svw: $size * (100 / $spDesignSize) + vw;
+  @return $svw;
+}
+
+// px→rem変換
+@function pxToRem($px: 0) {
+  @return if($px !=0, $px / 16 * 1rem, 0);
+}
+

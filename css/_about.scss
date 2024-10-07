@@ -1,0 +1,215 @@
+@use 'mixin';
+@use 'variable';
+@use 'reset';
+@use 'common';
+@use 'function';
+@use 'header';
+@use 'footer';
+
+/* ===============================================
+aboutページ ファーストビュー
+=============================================== */
+
+.p-about__fv-img {
+  background: url(../img/about-us.png) no-repeat center center / cover;
+  padding-top: 60%;
+  border-radius: 50px;
+  
+  @include mixin.mq('sp') {
+    margin-top: function.pxToRem(120);
+    padding-top: 100%;
+    border-radius: 50px 0 0 50px;
+  }
+
+  @include mixin.mq('tab') {
+    padding-top: 64%;
+    border-radius: 50px 0 0 50px;
+  }
+}
+
+/* ===============================================
+ 私達について
+=============================================== */
+// _common.scssに記載
+
+/* ===============================================
+ 経営理念
+=============================================== */
+.p-concept {
+  padding-top: function.pxToRem(80);
+}
+
+.p-concept__title {
+  font-size: clamp(1.75rem, 1.662rem + 0.38vw, 2rem);
+}
+
+.p-concept__img {
+  padding-top: function.pxToRem(64);
+  width: 60vw;
+
+  @include mixin.mq('sp') {
+    padding-top: function.pxToRem(32);
+    width: 100%;
+  }
+
+  @include mixin.mq('tab') {
+    padding-top: function.pxToRem(32);
+    width: 100%;
+  }
+}
+
+/* ===============================================
+ 会社概要
+=============================================== */
+.p-company {
+  padding-top: 50px;
+}
+
+.p-company__inner {
+  width:min(100%, function.pxToRem(953));
+}
+
+.p-company__title {
+  font-size: clamp(1.75rem, 1.662rem + 0.38vw, 2rem);
+}
+
+.p-company__container {
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: space-between;
+  padding-top: function.pxToRem(64);
+
+  @include mixin.mq('sp') {
+    flex-flow: column wrap;
+    gap: 20px;
+    padding-top: function.pxToRem(32);
+  }
+
+  @include mixin.mq('tab') {
+    flex-flow: column wrap;
+    gap: 20px;
+    padding-top: function.pxToRem(32);
+  }
+}
+
+.p-company__text {
+  width: min(100%, #{function.pxToRem(465)});
+  line-height: 28.8px;
+  flex: 0 1 50%;
+
+  @include mixin.mq('tab') {
+   width: 100%;
+  }
+}
+
+.company__ceo {
+  display: flex;
+  flex-flow: column wrap;
+  padding-top: function.pxToRem(10);
+  gap: function.pxToRem(16);
+
+  @include mixin.mq('sp') {
+    flex-flow: row;
+    align-items: center;
+  }
+ 
+  .u-span {
+    font-weight: 700;
+    font-size: clamp(1.5rem, 1.318rem + 0.91vw, 2rem);
+    color: variable.$primary-color;
+  }
+}
+
+.p-table {
+  margin-top: function.pxToRem(52);
+  border-collapse:collapse;
+  width: 100%;
+
+  @include mixin.mq('sp') {
+    margin-top: function.pxToRem(60);
+  }
+
+  tr {
+    border-bottom : 1px solid #B1C6DC;
+    display: block;
+  }
+  
+  th,td {
+    padding: function.pxToRem(30) 0;
+    align-items: center;
+
+    @include mixin.mq('sp') {
+      padding: function.pxToRem(16) 0;  
+   }
+  }
+
+  th {
+    width:clamp(6.25rem, 1.961rem + 18.3vw, 15rem);
+  }
+}
+
+/* ===============================================
+安全への取り組み
+=============================================== */
+.p-safety {
+  padding: function.pxToRem(56) 0 function.pxToRem(198);
+
+  @include mixin.mq('sp') {
+    padding-bottom: function.pxToRem(80);
+  }
+}
+
+.p-safety__inner {
+  width:min(100%, function.pxToRem(953));
+}
+
+.p-safety__title {
+  font-size: clamp(1.75rem, 1.662rem + 0.38vw, 2rem);
+}
+
+.p-safety__container {
+  padding-top: function.pxToRem(84);
+
+  &+&{
+    padding-top: function.pxToRem(30);
+  }
+  
+  @include mixin.mq('sp') {
+    padding-top: function.pxToRem(40);
+  }
+}
+
+
+.p-safety__wrap {
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: space-between;
+  gap: min(#{function.pxToRem(44)});
+  
+  @include mixin.mq('sp') {
+    flex-flow: column;
+    gap: function.pxToRem(24);
+  }
+}
+
+.p-safety__sub-title {
+  padding-bottom: function.pxToRem(30);
+  font-size:clamp(1.25rem, 1.162rem + 0.38vw, 1.5rem);
+ 
+  @include mixin.mq('sp') {
+    padding-bottom: function.pxToRem(16);
+  }
+}
+
+.p-safety__text {
+  line-height: function.pxToRem(28.8);
+}
+
+.p-safety__img {
+  flex-shrink: 0;
+  width: function.pxToRem(267);
+  
+  @include mixin.mq('sp') {
+    width: 100%;
+  }
+}

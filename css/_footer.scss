@@ -1,0 +1,151 @@
+@use 'mixin';
+@use 'variable';
+@use 'common';
+@use 'function';
+
+/* ===============================================
+# footer
+=============================================== */
+
+.l-footer {
+  padding: function.pxToRem(84) 0 function.pxToRem(47);
+
+  @include mixin.mq('sp') {
+    padding: function.pxToRem(24) 0;
+  }
+ }
+ 
+ .l-footer__inner {
+   display: flex;
+   justify-content: space-between;
+
+   @include mixin.mq('sp') {
+    flex-flow: column wrap;
+    align-items: center;
+   }
+
+   @include mixin.mq('tab') {
+    gap: function.pxToRem(48);
+   }
+ }
+ 
+ .l-footer__container {
+  flex: 0 1 50%;
+  padding-top: function.pxToRem(8);
+
+   @include mixin.mq('sp') {
+    width: 100%;
+   }
+ }
+
+ .l-footer__logo {
+    padding-top: function.pxToRem(8);
+
+  @include mixin.mq('sp') {
+    text-align: center;
+  }
+
+  @include mixin.mq('tab') {
+    text-align: center;
+  }
+ }
+
+ .l-footer__company {
+  padding-top: function.pxToRem(28);
+  display: flex;
+  flex-flow: column wrap;
+  gap: function.pxToRem(12);
+  
+  @include mixin.mq('sp') {
+    padding-top:function.pxToRem(30);
+    text-align: center;
+  }
+
+  @include mixin.mq('tab') {
+    padding-top: function.pxToRem(30);
+  }
+}
+
+.l-footer__row {
+  display: flex;
+  flex-flow: row;
+  gap: function.pxToRem(16);
+  font-size: clamp(0.75rem, 0.662rem + 0.38vw, 1rem);
+    
+  @include mixin.mq('sp') {
+    flex-flow: column wrap;
+    gap: function.pxToRem(12);
+    align-items: center;
+   justify-content: center;
+  }
+
+  @include mixin.mq('tab') {
+    flex-flow: column wrap;
+    gap: function.pxToRem(12);
+    align-items: center;
+   justify-content: center;
+  }
+}
+
+.u-flex {
+  @include mixin.mq('sp') {
+    flex-flow: row wrap;
+  }
+
+  @include mixin.mq('tab') {
+    flex-flow: row wrap;
+  }
+ }
+ 
+ .l-footer__nav__list{
+   ul{
+     display: flex;
+     flex-flow: row wrap;
+     font-weight: 700;
+     
+     
+     @include mixin.mq('sp') {
+       flex-flow: column wrap;
+
+       &:first-child{
+        padding-top: function.pxToRem(30);
+       }
+      }
+    }
+    
+    li{
+    padding-top: function.pxToRem(36);
+    padding-right: function.pxToRem(20);
+    flex-flow: row wrap;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      opacity: .6;
+    }
+    
+    @include mixin.mq('sp') {
+       text-align: center;
+       padding-top: function.pxToRem(24);
+       padding-right: 0;
+     }
+    
+     .c-mail-icon {
+      display: inline-block;
+      vertical-align: -5px;
+      padding-right: .5rem;
+    }
+   }
+ }
+ 
+ .l-footer__copyright {
+   display: block;
+   text-align: right;
+   padding-top: function.pxToRem(78);
+
+
+   @include mixin.mq('sp') {
+    text-align: center;
+    padding-top: function.pxToRem(38);
+   }
+ } 
+ 

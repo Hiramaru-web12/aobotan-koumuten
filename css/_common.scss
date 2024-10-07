@@ -1,0 +1,272 @@
+@use 'variable';
+@use 'mixin';
+@use 'reset';
+@use 'function';
+
+/* ===============================================
+common
+=============================================== */
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 1278px) {
+  .is-pc {
+    display: none;
+  }
+}
+
+@media (min-width: 1279px) {
+  .is-sp {
+    display: none;
+  }
+}
+
+.c-inner {
+  max-width: function.pxToRem(1120);
+
+  @include mixin.mq('sp') {
+    width: 100%;
+    padding: 0 function.pxToRem(16);
+  }
+
+  @include mixin.mq('tab') {
+    width: 100%;
+    padding: 0 function.pxToRem(48);
+  }
+}
+
+/* ===============================================
+# ファーストビュー
+=============================================== */
+
+.c-fv {
+  @include mixin.mq('pc') {
+    position: relative;
+    z-index: 0;
+  
+        &:before {
+          position: absolute;
+          content: "";
+          background: variable.$primary-color;
+          display: block;
+          width: 62.5%;
+          bottom: 30%;
+          top: 0;
+          right: 0;
+          z-index: -1;
+          
+      }
+    }
+
+  }
+
+  .c-fv__container{
+    @include mixin.mq('pc'){
+      padding-top: function.pxToRem(40);
+      padding-right: function.pxToRem(40);
+    } 
+    
+    @include mixin.mq('sp') {
+      padding-left: function.pxToRem(10);
+    }
+
+    @include mixin.mq('tab') {
+      padding-left: function.pxToRem(10);
+    }
+    
+  }
+
+
+/* ===============================================
+# 各セクションタイトル
+=============================================== */
+.c-head__title__wrap {
+  @include mixin.mq('sp') {
+    padding-top: function.pxToRem(40);
+  }
+}
+
+.c-head__title {
+  font-size: clamp(1.25rem, 1.162rem + 0.38vw, 1.5rem);
+  font-weight: 700;
+}
+
+.c-head__title-en {
+  font-family: variable.$font-en;
+  color: transparent;
+    -webkit-text-stroke: 1px variable.$primary-color;
+  font-size: clamp(4.5rem, 3.268rem + 5.26vw, 8rem);
+  line-height: 100%;
+  margin-top: 16px;
+}
+
+/* ===============================================
+# 下層ページ共通部分
+=============================================== */
+.c-fv{
+  @include mixin.mq('sp') {
+   padding-left: function.pxToRem(48);
+  }
+
+  @include mixin.mq('tab') {
+    padding-top: function.pxToRem(120);
+   padding-left: function.pxToRem(48);
+  }
+}
+.c-page-header {
+  padding-top: function.pxToRem(56);
+  position: relative;
+
+  @include mixin.mq('sp') {
+    padding-top: function.pxToRem(28);
+  }
+}
+
+.c-page-header__title {
+  font-size: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem);
+}
+
+.c-page-header__text {
+  width: min(100%, #{function.pxToRem(416)});
+  line-height: function.pxToRem(28.8);
+  padding-top:function.pxToRem(64);
+
+  @include mixin.mq('sp') {
+    padding-top: function.pxToRem(32);  }
+}
+
+.c-page-header__figure {
+  position: absolute;
+  top: 14%;
+  left: 46%;
+  width: clamp(5.125rem, 3.298rem + 7.79vw, 10.313rem);
+
+  @include mixin.mq('sp') {
+    top: 3%;
+    right: 3%;
+    left: auto;
+  }
+
+  @include mixin.mq('tab') {
+    top: 10%;
+    right: 10%;
+    left: auto;
+  }
+}
+
+.c-btn__container {
+  display: flex;
+  gap: function.pxToRem(24);
+ width: min(100%, #{function.pxToRem(730)});
+ padding-top: function.pxToRem(64);
+
+@include mixin.mq('sp') {
+  padding-top: function.pxToRem(32);
+  flex-flow: column wrap;
+}
+}
+
+.c-btn__item {
+  border: 1px solid variable.$primary-color;
+  border-radius: 10px;
+  display: inline-block;
+  width: function.pxToRem(208);
+  padding: function.pxToRem(8) function.pxToRem(11);
+  text-align: center;
+  background: #fff;
+  transition: all 0.3s ease 0s;
+
+  @include mixin.mq('sp') {
+    width: 80%;
+    margin: 0   auto;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    vertical-align: middle;
+    line-height: 1;
+    border: 2px solid variable.$primary-color;
+    border-left: 0;
+    border-bottom: 0;
+    box-sizing: border-box;
+    transform: translateY(-25%) rotate(135deg);
+  }
+    
+    &:hover {
+      color: #fff;
+      background: variable.$primary-color;
+
+      &::after{
+        border: 2px solid #fff;
+        border-left: 0;
+        border-bottom: 0;
+      }
+    }
+}
+
+// メールフォームはこちらへボタン
+.c-contact__btn{
+  font-weight: 700;
+  background: #fff;
+  border-radius: 10px;
+  width:function.pxToRem(284);
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  transition: all 0.3s ease 0s;
+  padding: function.pxToRem(16) function.pxToRem(32);
+  display: inline-block;
+  margin-left: function.pxToRem(64);
+  margin-top: function.pxToRem(10);
+
+  @include mixin.mq('sp') {
+    margin-left: 0;
+    margin-top: function.pxToRem(36);
+  }
+
+  @include mixin.mq('tab') {
+    margin-left: 0;
+    margin-top: function.pxToRem(36);
+  }
+
+  .c-mail-icon {
+    display: inline-block;
+    vertical-align: -3px;
+    padding-right: .5em;
+    width: function.pxToRem(26);
+    transition: all 0.3s ease 0s;
+  }
+  
+  &::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background: #000;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 48%;
+    transform: translateY(-50%);
+    left: function.pxToRem(255);
+  }
+  
+  &:hover {
+    background: #000;
+    color: #fff;
+
+    img{
+      filter: invert(1);
+    }
+
+    &::after {
+      background: #fff;
+    }
+  }
+  }
+
+  @include mixin.mq('sp') {
+  }
